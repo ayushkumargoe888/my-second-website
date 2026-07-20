@@ -108,37 +108,37 @@ if (heroBtn) {
 }
 
 // Contact Form
-const form = document.querySelector("form");
+const form = document.getElementById("enquiryForm");
 
 if (form) {
+    form.addEventListener("submit", function(e) {
 
-    form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        e.preventDefault();
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const city = document.getElementById("city").value;
+    const plot = document.getElementById("plot").value;
+    const message = document.getElementById("message").value;
 
-        const name = document.querySelector('input[type="text"]').value.trim();
-        const phone = document.querySelector('input[type="tel"]');
+    const whatsappMessage =
+`🏠 *New Construction Enquiry*
 
-        if (name === "") {
+👤 Name: ${name}
+📞 Phone: ${phone}
+📍 City: ${city}
+📐 Plot Size: ${plot}
 
-            alert("Please enter your name.");
-            return;
+📝 Project Details:
+${message}`;
 
-        }
+    window.open(
+        `https://wa.me/919810790791?text=${encodeURIComponent(whatsappMessage)}`,
+        "_blank"
+    );
 
-        if (phone && phone.value.trim() === "") {
-
-            alert("Please enter your phone number.");
-            return;
-
-        }
-
-        alert("Thank you, " + name + "! We have received your inquiry.");
-
-        form.reset();
-
-    });
-
+    form.reset();
+});
 }
 
 // Counter Animation
