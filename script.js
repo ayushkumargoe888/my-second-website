@@ -33,13 +33,16 @@ body{
     width:100%;
     background:rgba(0,0,0,.45);
     backdrop-filter:blur(8px);
+
+    z-index: 9999;
+    pointer-events: auto;
 }
 
 .logo{
     font-size:30px;
     font-weight:700;
 }
-.logo span{color:#d4af37;}
+.logo span{color:#d3731e;}
 
 .nav-links{
     list-style:none;
@@ -47,15 +50,31 @@ body{
     gap:25px;
 }
 
-.nav-links a{
-    color:#fff;
-    text-decoration:none;
-    transition:.3s;
-}
-.nav-links a:hover{
-    color:#d4af37;
+.nav-links a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+    border: 2px solid #D4AF37;
+    border-radius: 25px;
+    transition: 0.3s;
 }
 
+.nav-links a:hover {
+    background: #D4AF37;
+    color: white;
+    transform: translateY(-2px);
+}
+.nav-links {
+    position: relative;
+    z-index: 10000;
+}
+
+.nav-links a {
+    position: relative;
+    z-index: 10001;
+    cursor: pointer;
+}
 .hero-content{
     height:100%;
     display:flex;
@@ -522,22 +541,46 @@ font-size:17px;
 line-height:1.8;
 
 }
+.project-card {
+    padding: 0;
+    overflow: hidden;
+}
 
+.project-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
 
-/* Mobile navigation - keep all buttons on one line */
-@media (max-width: 768px) {
-    .nav-links {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 8px;
-        justify-content: center;
-        width: 100%;
-        padding: 0;
-    }
+.project-card h3,
+.project-card p {
+    margin-left: 30px;
+    margin-right: 30px;
+}
 
-    .nav-links a {
-        padding: 6px 9px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
+.project-card h3 {
+    margin-top: 25px;
+}
+
+.project-card p {
+    margin-bottom: 30px;
+}
+.nav-links a {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid #D4AF37;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background: #D4AF37;
+    color: white;
+    transform: translateY(-2px);
+}
+section {
+    scroll-margin-top: 90px;
 }
