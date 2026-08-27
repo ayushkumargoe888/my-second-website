@@ -3,15 +3,16 @@
 // =============================
 
 // Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
         e.preventDefault();
 
-        const target = document.querySelector(this.getAttribute("href"));
+        const section = document.querySelector(this.getAttribute('href'));
 
-        if (target) {
-            target.scrollIntoView({
-                behavior: "smooth"
+        if (section) {
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         }
     });
@@ -222,4 +223,4 @@ topBtn.addEventListener("click", () => {
 });
 
 // Console Message
-console.log("Aggarwal Buildtech Website Loaded Successfully.");document.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});});
+console.log("Aggarwal Buildtech Website Loaded Successfully.");
