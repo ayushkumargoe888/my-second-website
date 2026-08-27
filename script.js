@@ -1,226 +1,543 @@
-// =============================
-// Aggarwal Buildtech JavaScript
-// =============================
 
-// Smooth Scrolling
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
 
-        const section = document.querySelector(this.getAttribute('href'));
+body{
+    background:#f5f5f5;
+    color:#333;
+    line-height:1.6;
+}
 
-        if (section) {
-            section.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+.hero {
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1769780265587-037ee842c0b0?auto=format&fit=crop&fm=jpg&q=80&w=1600');
 
-// Navbar Background Change
-const navbar = document.querySelector(".navbar");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #fff;
+}
 
-window.addEventListener("scroll", () => {
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(8px);
+}
 
-    if (window.scrollY > 70) {
+.logo{
+    font-size:30px;
+    font-weight:700;
+}
+.logo span{color:#d4af37;}
 
-        navbar.style.background = "#0B2A52";
-        navbar.style.padding = "15px 8%";
-        navbar.style.boxShadow = "0 5px 15px rgba(0,0,0,.3)";
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
 
-    } else {
+.nav-links a{
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+.nav-links a:hover{
+    color:#d4af37;
+}
 
-        navbar.style.background = "rgba(0,0,0,.45)";
-        navbar.style.padding = "20px 8%";
-        navbar.style.boxShadow = "none";
+.hero-content{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
 
+.hero-content h1{
+    font-size:56px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 30px;
+    background:#d4af37;
+    color:#fff;
+    text-decoration:none;
+    border-radius:5px;
+    transition:.3s;
+}
+.btn:hover{
+    background:#b88e1f;
+}
+
+section{
+    padding:80px 8%;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:35px;
+    color:#0b2a52;
+    font-size:36px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+#why ul,#process ol{
+    max-width:700px;
+    margin:auto;
+    padding-left:20px;
+}
+
+blockquote{
+    background:#fff;
+    padding:20px;
+    margin:20px auto;
+    border-left:5px solid #d4af37;
+    max-width:700px;
+    box-shadow:0 5px 10px rgba(0,0,0,.08);
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input,textarea{
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+
+button{
+    padding:14px;
+    background:#0b2a52;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+button:hover{
+    background:#d4af37;
+}
+
+iframe{
+    margin-top:30px;
+    border-radius:10px;
+}
+
+footer{
+    background:#0b2a52;
+    color:#fff;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:768px){
+.navbar{
+flex-direction:column;
+}
+.nav-links{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+.hero-content h1{
+font-size:38px;
+}
+.hero-content p{
+font-size:17px;
+}
+}
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:1000;
+transition:.3s;
+}
+
+.whatsapp:hover{
+transform:scale(1.1);
+}
+#about{
+    background:#F8F6F1;
+}
+
+#services{
+    background:#ffffff;
+}
+
+#why{
+    background:#F8F6F1;
+}
+
+#projects{
+    background:#ffffff;
+}
+
+#testimonials{
+    background:#F8F6F1;
+}
+
+#contact{
+    background:#F3F5F7;
+}
+.hero-content h1{
+    animation: slideUp 1s ease;
+}
+
+.hero-content p{
+    animation: fadeIn 1.5s ease;
+}
+
+.btn{
+    animation: fadeIn 2s ease;
+}
+
+@keyframes slideUp{
+    from{
+        transform:translateY(50px);
+        opacity:0;
     }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
 
-});
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+.card{
+    transition:.4s;
+}
 
-// Reveal Animation
-const sections = document.querySelectorAll("section");
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 25px 45px rgba(0,0,0,.2);
+}
+.card img{
+    transition:.5s;
+}
 
-const observer = new IntersectionObserver(entries => {
+.card:hover img{
+    transform:scale(1.08);
+}
+.navbar{
+    transition:.4s;
+}
+.btn{
+    transition:.4s;
+}
 
-    entries.forEach(entry => {
+.btn:hover{
+    background:#D4AF37;
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(212,175,55,.5);
+}
+.whatsapp{
+animation:float 2s infinite;
+}
 
-        if (entry.isIntersecting) {
+@keyframes float{
 
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-        }
+0%{
+transform:translateY(0);
+}
 
-    });
+50%{
+transform:translateY(-8px);
+}
 
-}, {
+100%{
+transform:translateY(0);
+}
 
-    threshold: 0.2
+}
+html{
+scroll-behavior:smooth;
+}.hero-content{
+    position:relative;
+}
 
-});
+.experience{
+    position:absolute;
+    top:80px;
+    left:60px;
 
-sections.forEach(section => {
+    width:170px;
+    height:170px;
 
-    section.style.opacity = "0";
-    section.style.transform = "translateY(60px)";
-    section.style.transition = "0.8s ease";
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
 
-    observer.observe(section);
+    border:2px solid rgba(255,255,255,.3);
 
-});
+    border-radius:50%;
 
-// Card Hover Effect
-const cards = document.querySelectorAll(".card");
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-cards.forEach(card => {
+    color:white;
 
-    card.addEventListener("mouseenter", () => {
+    animation:float 3s ease-in-out infinite;
+}
 
-        card.style.transform = "translateY(-10px)";
-        card.style.boxShadow = "0 20px 35px rgba(0,0,0,.2)";
+.experience h1{
 
-    });
+    font-size:55px;
 
-    card.addEventListener("mouseleave", () => {
+    color:#D4AF37;
 
-        card.style.transform = "translateY(0)";
-        card.style.boxShadow = "0 5px 15px rgba(0,0,0,.1)";
+    margin:0;
 
-    });
-
-});
-
-// Hero Button Animation
-const heroBtn = document.querySelector(".btn");
-
-if (heroBtn) {
-
-    heroBtn.addEventListener("mouseenter", () => {
-
-        heroBtn.style.transform = "scale(1.08)";
-    });
-
-    heroBtn.addEventListener("mouseleave", () => {
-
-        heroBtn.style.transform = "scale(1)";
-    });
+    font-weight:700;
 
 }
 
-// Contact Form
-const form = document.getElementById("enquiryForm");
+.experience span{
 
-if (form) {
-    form.addEventListener("submit", function(e) {
+    font-size:16px;
 
-    e.preventDefault();
+    letter-spacing:1px;
 
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const city = document.getElementById("city").value;
-    const plot = document.getElementById("plot").value;
-    const message = document.getElementById("message").value;
+    text-align:center;
 
-    const whatsappMessage =
-`🏠 *New Construction Enquiry*
+}@keyframes float{
 
-👤 Name: ${name}
-📞 Phone: ${phone}
-📍 City: ${city}
-📐 Plot Size: ${plot}
-
-📝 Project Details:
-${message}`;
-
-    window.open(
-        `https://wa.me/919810790791?text=${encodeURIComponent(whatsappMessage)}`,
-        "_blank"
-    );
-
-    form.reset();
-});
+0%{
+transform:translateY(0);
 }
 
-// Counter Animation
-const counters = document.querySelectorAll(".counter");
+50%{
+transform:translateY(-10px);
+}
 
-counters.forEach(counter => {
+100%{
+transform:translateY(0);
+}
 
-    counter.innerText = "0";
+}@media(max-width:768px){
 
-    const updateCounter = () => {
+.experience{
 
-        const target = +counter.getAttribute("data-target");
+width:120px;
+height:120px;
 
-        const count = +counter.innerText;
+top:120px;
+left:20px;
 
-        const increment = target / 100;
+}
 
-        if (count < target) {
+.experience h1{
 
-            counter.innerText = `${Math.ceil(count + increment)}`;
+font-size:36px;
 
-            setTimeout(updateCounter, 20);
+}
 
-        } else {
+.experience span{
 
-            counter.innerText = target;
+font-size:12px;
 
-        }
+}
 
-    };
+}.section-title{
+font-size:42px;
+font-weight:700;
+text-align:center;
+color:#0B2A52;
+margin-bottom:15px;
+position:relative;
+}
 
-    updateCounter();
+.section-title span{
+display:block;
+width:90px;
+height:5px;
+background:#D4AF37;
+margin:18px auto 0;
+border-radius:10px;
+}
+.card{
 
-});
+background:white;
+padding:35px;
+border-radius:18px;
+transition:.45s;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+overflow:hidden;
+position:relative;
 
-// Scroll To Top Button
-const topBtn = document.createElement("button");
+}
 
-topBtn.innerHTML = "⬆";
+.card::before{
 
-topBtn.style.position = "fixed";
-topBtn.style.bottom = "25px";
-topBtn.style.right = "25px";
-topBtn.style.width = "50px";
-topBtn.style.height = "50px";
-topBtn.style.border = "none";
-topBtn.style.borderRadius = "50%";
-topBtn.style.background = "#D4AF37";
-topBtn.style.color = "#fff";
-topBtn.style.fontSize = "20px";
-topBtn.style.cursor = "pointer";
-topBtn.style.display = "none";
-topBtn.style.zIndex = "999";
+content:"";
+position:absolute;
+left:0;
+top:0;
+height:5px;
+width:100%;
+background:#D4AF37;
 
-document.body.appendChild(topBtn);
+}
 
-window.addEventListener("scroll", () => {
+.card:hover{
 
-    if (window.scrollY > 300) {
+transform:translateY(-15px);
+box-shadow:0 25px 45px rgba(0,0,0,.18);
 
-        topBtn.style.display = "block";
+}
+.btn{
 
-    } else {
+padding:15px 38px;
+border-radius:50px;
+background:linear-gradient(135deg,#D4AF37,#F7C948);
+color:white;
+font-weight:600;
+transition:.4s;
+}
 
-        topBtn.style.display = "none";
+.btn:hover{
 
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(212,175,55,.5);
+
+}
+#services{
+
+background:#fff;
+
+}
+
+#why{
+
+background:#F8F9FC;
+
+}
+
+#projects{
+
+background:#fff;
+
+}
+
+#process{
+
+background:#F8F9FC;
+
+}
+.card{
+
+animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+.card:hover h3{
+
+color:#D4AF37;
+
+transition:.3s;
+
+}
+.card h3{
+
+font-size:24px;
+margin-bottom:15px;
+
+}
+
+.card p{
+
+font-size:17px;
+line-height:1.8;
+
+}
+
+
+/* Mobile navigation - keep all buttons on one line */
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 8px;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
     }
 
-});
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
-
-// Console Message
-console.log("Aggarwal Buildtech Website Loaded Successfully.");
+    .nav-links a {
+        padding: 6px 9px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
