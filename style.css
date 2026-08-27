@@ -13,13 +13,15 @@ body{
     line-height:1.6;
 }
 
-.hero{
-    background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-    url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80');
-    background-size:cover;
-    background-position:center;
-    height:100vh;
-    color:#fff;
+.hero {
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1769780265587-037ee842c0b0?auto=format&fit=crop&fm=jpg&q=80&w=1600');
+
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #fff;
 }
 
 .navbar{
